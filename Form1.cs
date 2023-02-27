@@ -57,6 +57,31 @@ namespace PyWinForm_ConsumoAPI
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dynamic respuesta = dbApi.Get("https://reqres.in/api/users?page=1");
+            this.dataGridView1.DataSource = respuesta.data;
 
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.CurrentCell = null;
+            foreach(DataGridView fila in dataGridView1.Rows)
+            {
+                //fila.Visible=fila.SelectedCells["firstName"].value.ToString().ToUpper().Contains(this.textBox5.Text.ToUpper());
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dynamic respuesta = dbApi.GetItem(10);
+            dbApi.GetItems();
+            dbApi.GetItems("ABC");
+            dbApi.PostItem("NewItem");
+            dbApi.PutItem(4, "ReplaceItem");
+            dbApi.DeleteItem(5);
+        }
     }
 }
